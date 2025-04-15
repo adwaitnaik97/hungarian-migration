@@ -1,0 +1,10 @@
+/build*
+/_build*
+
+*venv*/*
+.vs
+.vscode
+/cmake.lock
+
+*.sh
+/packages/*
