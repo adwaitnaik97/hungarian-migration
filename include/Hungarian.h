@@ -12,69 +12,64 @@
 // modified by Adwait Naik, AI Drivers 2025
 //
 
-#ifndef __HUNGARIAN_ALGORITHM_H_
-#define __HUNGARIAN_ALGORITHM_H_
+#ifndef HUNGARIAN_H
+#define HUNGARIAN_H
 
 #include <vector>
 #include <iostream>
 #include <limits>
-#include <memory>
+#include <cmath>
+#include <cstddef>
 
 class HungarianAlgorithm
 {
-
 public:
     HungarianAlgorithm() = default;
-
     ~HungarianAlgorithm() = default;
 
-    // Solve the assignment problem
+    [[nodiscard]]
     double Solve(std::vector<std::vector<double>> &DistMatrix, std::vector<int> &Assignment);
 
 private:
-    void assignmentOptimal(std::vector<int> &assignment, double &cost, const std::vector<double> &distMatrix, std::size_t nRows, std::size_t nCols) const;
+    void assignmentOptimal(std::vector<int> &assignment, double &cost,
+                           const std::vector<double> &distMatrix, std::size_t nRows, std::size_t nCols) const;
 
-    void buildAssignmentVector(std::vector<int> &assignment, const std::vector<bool> &starMatrix, std::size_t nOfRows, std::size_t nOfCols) const;
+    void buildAssignmentVector(std::vector<int> &assignment, const std::vector<bool> &starMatrix,
+                               std::size_t nRows, std::size_t nCols) const;
 
     void computeAssignmentCost(const std::vector<int> &assignment, double &cost,
-                               const std::vector<double> &distMatrix,
-                               std::size_t nOfRows) const;
+                               const std::vector<double> &distMatrix, std::size_t nRows) const;
 
-    void step2a(std::vector<int> &assignment,
-                std::vector<double> &distMatrix,
+    void step2a(std::vector<int> &assignment, std::vector<double> &distMatrix,
                 std::vector<bool> &starMatrix, std::vector<bool> &newStarMatrix,
                 std::vector<bool> &primeMatrix, std::vector<bool> &coveredColumns,
-                std::vector<bool> &coveredRows, std::size_t nOfRows,
-                std::size_t nOfColumns, std::size_t minDim) const;
+                std::vector<bool> &coveredRows, std::size_t nRows,
+                std::size_t nCols, std::size_t minDim) const;
 
-    void step2b(std::vector<int> &assignment,
-                std::vector<double> &distMatrix,
+    void step2b(std::vector<int> &assignment, std::vector<double> &distMatrix,
                 std::vector<bool> &starMatrix, std::vector<bool> &newStarMatrix,
                 std::vector<bool> &primeMatrix, std::vector<bool> &coveredColumns,
-                std::vector<bool> &coveredRows, std::size_t nOfRows,
-                std::size_t nOfColumns, std::size_t minDim) const;
+                std::vector<bool> &coveredRows, std::size_t nRows,
+                std::size_t nCols, std::size_t minDim) const;
 
-    void step3(std::vector<int> &assignment,
-               std::vector<double> &distMatrix,
+    void step3(std::vector<int> &assignment, std::vector<double> &distMatrix,
                std::vector<bool> &starMatrix, std::vector<bool> &newStarMatrix,
                std::vector<bool> &primeMatrix, std::vector<bool> &coveredColumns,
-               std::vector<bool> &coveredRows, std::size_t nOfRows,
-               std::size_t nOfColumns, std::size_t minDim) const;
+               std::vector<bool> &coveredRows, std::size_t nRows,
+               std::size_t nCols, std::size_t minDim) const;
 
-    void step4(std::vector<int> &assignment,
-               std::vector<double> &distMatrix,
+    void step4(std::vector<int> &assignment, std::vector<double> &distMatrix,
                std::vector<bool> &starMatrix, std::vector<bool> &newStarMatrix,
                std::vector<bool> &primeMatrix, std::vector<bool> &coveredColumns,
-               std::vector<bool> &coveredRows, std::size_t nOfRows,
-               std::size_t nOfColumns, std::size_t minDim, std::size_t row,
+               std::vector<bool> &coveredRows, std::size_t nRows,
+               std::size_t nCols, std::size_t minDim, std::size_t row,
                std::size_t col) const;
 
-    void step5(std::vector<int> &assignment,
-               std::vector<double> &distMatrix,
+    void step5(std::vector<int> &assignment, std::vector<double> &distMatrix,
                std::vector<bool> &starMatrix, std::vector<bool> &newStarMatrix,
                std::vector<bool> &primeMatrix, std::vector<bool> &coveredColumns,
-               std::vector<bool> &coveredRows, std::size_t nOfRows,
-               std::size_t nOfColumns, std::size_t minDim) const;
+               std::vector<bool> &coveredRows, std::size_t nRows,
+               std::size_t nCols, std::size_t minDim) const;
 };
 
-#endif // __HUNGARIAN_ALGORITHM_H_
+#endif // HUNGARIAN_H
