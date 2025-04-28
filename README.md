@@ -36,7 +36,7 @@ sudo make install
 
 ```bash 
 cd /tmp
-rm -rf cmake-3.25.2 cmake-3.25.2.tar.gz
+rm -rf cmake-3.25.2.tar.gz
 ```
 
 ### Step 6: Verify the installation
