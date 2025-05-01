@@ -1,5 +1,6 @@
 # Hungarian-migration
 Refactor and migration of the [Hungarian algorithm](https://github.com/mcximing/hungarian-algorithm-cpp) to C++17. This is lincensed under the [BSD-2-Clause](https://github.com/adwaitnaik97/hungarian-migration/blob/main/LICENSE) License.
+The main branch has cmake build. To compile this repository with ROS2 packages, please refer to the `[colcon-build](https://github.com/adwaitnaik97/hungarian-migration/tree/colcon-build)` branch.
 
 # Installation
 
