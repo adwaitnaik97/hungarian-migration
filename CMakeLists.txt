@@ -8,6 +8,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Define executable name
 set(HUNGARIAN_MIGRATION hungarian_migration)
 
+# Find ament_cmake (required for colcon builds)
+find_package(ament_cmake REQUIRED)
+
 # Add executable
 add_executable(
     ${HUNGARIAN_MIGRATION}
@@ -17,6 +20,21 @@ add_executable(
 
 # Include directories (if headers are in 'include/')
 target_include_directories(${HUNGARIAN_MIGRATION} PRIVATE include)
+
+# Link libraries (if needed, add libraries here)
+# target_link_libraries(${HUNGARIAN_MIGRATION} ...)
+
+# Install targets
+install(TARGETS ${HUNGARIAN_MIGRATION}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+)
+
+# Install include directory
+install(DIRECTORY include/
+        DESTINATION include
+)
 
 # Option to build tests
 option(BUILD_TESTS "Build tests" ON)
@@ -28,13 +46,5 @@ if(BUILD_TESTS)
   add_subdirectory(test)
 endif()
 
-# Installation
-install(TARGETS hungarian_migration
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-)
-
-install(DIRECTORY include/
-        DESTINATION include
-)
+# Export package for ament
+ament_package()

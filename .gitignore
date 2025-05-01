@@ -1,5 +1,7 @@
 /build*
 /_build*
+/install*
+/log*
 
 *venv*/*
 .vs

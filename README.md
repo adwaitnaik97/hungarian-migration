@@ -129,19 +129,22 @@ ls /usr/local/lib | grep gtest # Should list gtest libraries
 
 # Compilation & Usage
 
-### Step 1: Compile using Cmake
+### Step 1: Compile using colcon
 
 ```bash
-mkdir build
-cd build
-cmake .. -DBUILD_TESTS=ON
-make
+colcon build --packages-select hungarian_migration
 ```
 
-### Step 2: Testing
+### Step 2: Source workspace
 
 ```bash
-ctest --verbose
+. install/setup.bash
+```
+
+### Step 3: Testing
+
+```bash
+colcon test --packages-select hungarian_migration --event-handlers console_cohesion+
 ```
 
 
